@@ -11,5 +11,6 @@ Welcome <%= @user.name %>
 		<div><%= recipe.title %></div>
 		<div><%= recipe.description %></div>
 		<div><%= recipe.price %></div>
+		<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
 	<% end %>
 </div> 

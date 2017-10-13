@@ -5,14 +5,18 @@ class RecipesController < ApplicationController
 
 	def create
 		@recipe = Recipe.new(recipe_params)
-	if @recipe.save
-		redirect_to user_path(current_user)
-		flash[:success] = "Successfully create recipe listing"
-	else
-		render "new"
-		flash[:notice] = "Fail to create recipe listing"
+		if @recipe.save
+			redirect_to user_path(current_user)
+			flash[:success] = "Successfully create recipe listing"
+		else
+			render "new"
+			flash[:notice] = "Fail to create recipe listing"
+		end
 	end
-	end
+
+	def show
+ 		@recipe = Recipe.find(params[:id])
+ 	end
 
 	private
 
