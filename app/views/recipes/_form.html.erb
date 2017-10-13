@@ -12,3 +12,8 @@
 	<%= form.label :price %>
 	<%= form.text_field :price %>
 </div>
+
+<div class="image-field">
+  <%= form.label :images %>
+  <p><%= form.file_field :images, multiple: true, class: "form-control" %></p>
+</div>
