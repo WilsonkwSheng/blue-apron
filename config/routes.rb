@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+	resources :users, only: [:create, :show, :edit, :update]
 	root 'welcome#index'
 
 	get '/sign_up', to: 'users#new'

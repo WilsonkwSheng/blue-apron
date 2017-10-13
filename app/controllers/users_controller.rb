@@ -17,6 +17,17 @@ class UsersController < ApplicationController
  	def show
  		@user = User.find(params[:id])
  	end
+
+ 	def edit
+     @user = User.find(params[:id])
+  end
+ 
+ 	def update
+ 		@user = User.find(params[:id])
+ 		params[:user].delete(:password) if params[:user][:password].blank?
+ 		@user.update(user_params)
+ 		redirect_to user_path
+ 	end
  
  	private
  
