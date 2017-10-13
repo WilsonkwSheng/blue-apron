@@ -16,3 +16,6 @@
  <!-- link to get started -->
 <%= link_to 'Sign Up', sign_up_path %>
 <%= link_to 'Login', sign_in_path %>
+<%= link_to "Sign in with Facebook", "/auth/facebook" %>
+<%= link_to 'Sign Out', sign_out_path %> 
+<%= link_to 'My Home Page', user_path(current_user.id) %> 
