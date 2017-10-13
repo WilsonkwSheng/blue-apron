@@ -3,3 +3,13 @@ Welcome <%= @user.name %>
 <%= link_to 'Sign Out', root_path %>
 
 <%= link_to 'Edit', edit_user_path(@user) %>
+
+<%= link_to 'Create Recipe', new_recipe_path %>
+ 
+<div>
+	<% @recipes.each do |recipe| %>
+		<div><%= recipe.title %></div>
+		<div><%= recipe.description %></div>
+		<div><%= recipe.price %></div>
+	<% end %>
+</div> 
