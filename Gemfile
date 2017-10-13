@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # Use Figaro Gem for safe_keeping secret key
 gem 'figaro'
+# Use Omniauth-Facebook to login facebook
+gem 'omniauth-facebook'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
