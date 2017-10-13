@@ -33,6 +33,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 # Use Omniauth-Facebook to login facebook
 gem 'omniauth-facebook'
+# Use Carrierwave and minimagick for image upload
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
