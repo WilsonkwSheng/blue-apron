@@ -5,4 +5,13 @@ class Recipe < ApplicationRecord
 	has_many :ingredients
 	accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
 	mount_uploaders :images, ImageUploader
+
+	def self.search(search)
+		if search
+			where("title ILIKE :search", search: "%#{search}%")
+		else
+			all
+		end
+	end
+
 end

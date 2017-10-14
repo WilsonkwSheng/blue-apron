@@ -1,4 +1,8 @@
 class RecipesController < ApplicationController
+	def index
+		@recipe = Recipe.search(params[:title])
+	end
+
 	def new
 		@recipe = Recipe.new
 			3.times do
