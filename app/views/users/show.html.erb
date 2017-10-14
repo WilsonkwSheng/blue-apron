@@ -4,7 +4,9 @@ Welcome <%= @user.name %>
 
 <%= link_to 'Edit', edit_user_path(@user) %>
 
-<%= link_to 'Create Recipe', new_recipe_path %>
+<% if current_user.superadmin? || current_user.admin? %>
+	<%= link_to 'Create Recipe', new_recipe_path %>
+<% end %>
  
 <div>
 	<% @recipes.each do |recipe| %>
