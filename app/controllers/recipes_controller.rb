@@ -1,6 +1,9 @@
 class RecipesController < ApplicationController
 	def new
 		@recipe = Recipe.new
+			3.times do
+	    recipe = @recipe.directions.build
+	  end
 	end
 
 	def create
@@ -21,6 +24,6 @@ class RecipesController < ApplicationController
 	private
 
 	def recipe_params
-		params.require(:recipe).permit(:title, :description, :price, :user_id)
+		params.require(:recipe).permit(:title, :description, :price, :user_id, {images: []},directions_attributes: [:id, :step, :_destroy])
 	end
 end

@@ -18,7 +18,3 @@
 <%= link_to 'Login', sign_in_path %>
 <%= link_to "Sign in with Facebook", "/auth/facebook" %>
 <%= link_to 'Sign Out', root_path %>
-
-<% if current_user %>
- <%= link_to 'My Home Page', user_path(current_user.id) %>
-<% end %> 
