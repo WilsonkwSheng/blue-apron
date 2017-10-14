@@ -11,3 +11,7 @@
 	<p><%= direction.step %></p>
 <% end %>
 
+<% @recipe.ingredients.each_with_index do |ingredient, index| %>
+	<p>Ingredient, <%= index + 1 %></p> 
+	<p><%= ingredient.name %></p>
+<% end %>

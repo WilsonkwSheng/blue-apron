@@ -19,6 +19,13 @@
 	  <p><%= f.file_field :images, multiple: true, class: "form-control" %></p>
 	</div>
 
+Ingredients
+<div id="ingredients">
+	<%= f.fields_for :ingredients do |ingredient| %>
+		<%= render 'ingredient_fields', f: ingredient %>
+	<% end %>
+</div>
+
 Directions
 <div id="directions">
 	<%= f.fields_for :directions do |direction| %>
@@ -26,7 +33,6 @@ Directions
 	<% end %>
 </div>
 <div class="links">
-	<%= link_to_add_association 'Add Direction', f, :directions %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.submit %>
 <% end %>
