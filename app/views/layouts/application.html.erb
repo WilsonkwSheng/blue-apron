@@ -9,6 +9,12 @@
   </head>
 
   <body>
+
+  <%= form_tag recipes_path, :method => 'get' do %> 
+      <%= text_field_tag :title, params[:title], placeholder: "Search Recipe" %>
+      <%= submit_tag "Search"%>
+    <% end %>
+
 	  <% flash.each do |key, value| %>
 	    <div class="alert alert-<%= key %>"><%= value %></div>
 	  <% end %>
