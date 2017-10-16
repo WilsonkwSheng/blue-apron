@@ -1,9 +1,12 @@
-<%= link_to 'Sign Up', sign_up_path %>
-<%= link_to 'Login', sign_in_path %>
-<%= link_to "Sign in with Facebook", "/auth/facebook" %>
-<%= link_to 'Sign Out', sign_out_path, method: :delete %>
-
-<%= form_tag recipes_path, :method => 'get' do %> 
+<% if current_user.nil? %>
+	<%= link_to 'Sign Up', sign_up_path %>
+	<%= link_to 'Login', sign_in_path %>
+	<%= link_to "Sign in with Facebook", "/auth/facebook" %>
+<% else %>
+	<%= link_to 'Sign Out', sign_out_path, method: :delete %>
+<% end %>
+	<%= form_tag recipes_path, :method => 'get' do %> 
   <%= text_field_tag :title, params[:title], placeholder: "Search Recipe" %>
   <%= submit_tag "Search"%>
 <% end %>
+
