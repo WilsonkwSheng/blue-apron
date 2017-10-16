@@ -1,1 +1,5 @@
 $('#new_link').hide().after('<%= j render("form") %>');
+$('#hide_create_form').click(function(){
+	$("#new_link_div").addClass('hidden');
+	$('#new_link').show()
+})
