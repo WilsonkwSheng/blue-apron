@@ -4,8 +4,8 @@
 	<%= link_to 'Login', sign_in_path %>
 	<%= link_to "Sign in with Facebook", "/auth/facebook" %>
 <% else %>
+	<%= link_to 'Cook Menu Page', user_path(current_user) %>
 	<%= link_to 'Sign Out', sign_out_path, method: :delete %>
-	<%= link_to 'Go To Cook', user_path(current_user) %>
 <% end %>
 	<%= form_tag recipes_path, :method => 'get' do %> 
   <%= text_field_tag :title, params[:title], placeholder: "Search Recipe" %>

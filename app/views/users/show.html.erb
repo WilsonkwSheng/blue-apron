@@ -1,8 +1,6 @@
-Welcome <%= @user.name %>
- 
-<%= link_to 'Sign Out', root_path %>
+Welcome <%= @user.name.capitalize %>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to 'Edit Profile', edit_user_path(@user) %>
 
 <% if current_user.superadmin? || current_user.admin? %>
 	<%= link_to 'Create Recipe', new_recipe_path, remote: true, id: "new_link" %>
