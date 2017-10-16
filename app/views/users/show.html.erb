@@ -5,21 +5,25 @@ Welcome <%= @user.name %>
 <%= link_to 'Edit', edit_user_path(@user) %>
 
 <% if current_user.superadmin? || current_user.admin? %>
-	<%= link_to 'Create Recipe', new_recipe_path %>
+	<%= link_to 'Create Recipe', new_recipe_path, remote: true, id: "new_link" %>
 <% end %>
 
 <%= will_paginate @recipes %>
  
-<div>
-	<% @recipes.each do |recipe| %>
-		<% recipe.images.each do |all_img| %>
-			<div><%= image_tag all_img, class: "img-response" %></div>	
-			<div><%= recipe.title %></div>
-			<div><%= recipe.description %></div>
-			<div><%= recipe.price %></div>
-			<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
+<div class="container">
+	<% @recipes.each_with_index do |recipe, index| %>
+		<div class="row<%= index %>">
+			<% recipe.images.each do |all_img| %>
+				<p class="img-response"><%= image_tag all_img %></p>	
+				<p><%= recipe.title %></p>
+				<p><%= recipe.description %></p>
+				<p><%= recipe.price %></p>
+				<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
+				
+			<% end %>
+		</div>
 		<% end %>
-	<% end %>
+	 
 </div> 
 	
 <%= will_paginate @recipes %>

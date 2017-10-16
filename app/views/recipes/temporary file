@@ -1,0 +1,63 @@
+//////////////////////////////////////////////////////////////////////////////////////////
+draft 1
+<% @recipe.images.each do |all_img| %>
+	<%= image_tag all_img, class: "img-response" %>
+<% end %>
+
+<p><%= @recipe.title %></p>
+<p><%= @recipe.description %></p>
+<p><%= @recipe.price %></p>
+
+<%= @recipe.directions.first.step %>
+<p id="cook_time"><%= @recipe.directions[1].step %></p>
+<%= @recipe.directions[2].step if @recipe.directions[2]%>
+<div class="container">
+    <h1 class="title">Cooking Timer</h1>
+    <h1 id="timerLabel">00:<%=@recipe.directions[1].step.split(" ")[1]%>:00</h1>
+    <input type="button" class="myButton" onclick="start1()" value="START" id="startBtn">
+    <input type="button" class="myButton" onclick="stop()" value="STOP">
+    <input type="button" class="myButton" onclick="reset()" value="RESET">
+</div>
+
+<% @recipe.ingredients.each_with_index do |ingredient, index| %>
+	<p>Ingredient, <%= index + 1 %></p> 
+	<p><%= ingredient.name %></p>
+<% end %>
+
+<%= link_to "Make Payment", braintree_new_path(recipe_id: @recipe.id) %>
+end of draft 1
+//////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////
+draft 2
+var status = 0
+
+function start1(){
+    status = 1;
+    setInterval(timer_down, 1000);
+}
+
+function timer_down(){
+  time_remain = $("#timerLabel").text().split(":");
+  hours = time_remain[0]
+  minutes = time_remain[1]
+  seconds = time_remain[2]
+  if(seconds > 0) {
+    seconds -= 1
+    $("#timerLabel").text(hours+":"+minutes+":"+seconds);
+  } else if(seconds == 0 && minutes > 0) {
+    seconds = 59
+    minutes -= 1
+    $("#timerLabel").text(hours+":"+minutes+":"+seconds);
+  } else if(seconds == 0 && minutes == 0 && hours > 0) {
+    seconds = 59
+    minutes = 59
+    hours -= 1
+    $("#timerLabel").text(hours+":"+minutes+":"+seconds);
+  } else if(seconds == 0 && minutes == 0 && hours == 0) {
+    $("#timerLabel").text("Cooke done!");
+  }
+ 
+}
+end of draft 2
+//////////////////////////////////////////////////////////////////////////////////////////
