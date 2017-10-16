@@ -10,10 +10,13 @@ Welcome <%= @user.name %>
  
 <div>
 	<% @recipes.each do |recipe| %>
-		<div><%= recipe.title %></div>
-		<div><%= recipe.description %></div>
-		<div><%= recipe.price %></div>
-		<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
+		<% recipe.images.each do |all_img| %>
+			<div><%= image_tag all_img, class: "img-response" %></div>	
+			<div><%= recipe.title %></div>
+			<div><%= recipe.description %></div>
+			<div><%= recipe.price %></div>
+			<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
+		<% end %>
 	<% end %>
 </div> 
 	
