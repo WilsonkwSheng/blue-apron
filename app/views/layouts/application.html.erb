@@ -2,10 +2,12 @@
 <html>
   <head>
     <title>BlueApron</title>
+    <!-- JQuery Cdn -->
     <script
     src="https://code.jquery.com/jquery-3.2.1.js"
     integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
     crossorigin="anonymous"></script>
+    <!-- JQuery Cdn -->
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -18,15 +20,15 @@
   </head>
 
   <body>
+  <!-- NavBar  -->
+    <%= render partial: "layouts/navbar" %>
+  <!-- NavBar  -->
 
-  <%= form_tag recipes_path, :method => 'get' do %> 
-      <%= text_field_tag :title, params[:title], placeholder: "Search Recipe" %>
-      <%= submit_tag "Search"%>
-    <% end %>
-
+  <!-- For Flash Messages -->
 	  <% flash.each do |key, value| %>
 	    <div class="alert alert-<%= key %>"><%= value %></div>
 	  <% end %>
+  <!-- For Flash Messages -->
     <%= yield %>
   </body>
 </html>

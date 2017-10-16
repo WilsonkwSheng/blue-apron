@@ -1,12 +1,4 @@
-Welcome <%= @user.name %>
- 
-<%= link_to 'Sign Out', root_path %>
-
-<%= link_to 'Edit', edit_user_path(@user) %>
-
-<% if current_user.superadmin? || current_user.admin? %>
-	<%= link_to 'Create Recipe', new_recipe_path, remote: true, id: "new_link" %>
-<% end %>
+Welcome <%= @user.name.capitalize %>
 
 <%= will_paginate @recipes %>
  
@@ -19,7 +11,10 @@ Welcome <%= @user.name %>
 				<p><%= recipe.description %></p>
 				<p><%= recipe.price %></p>
 				<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
-				
+				<% if current_user.superadmin? %>
+					<%= link_to 'Edit This Meal', edit_recipe_path(recipe.id) %>
+					<%= link_to "Delete", recipe_path(recipe.id), :method => :delete, :confirm => "Are you sure?" %>
+				<% end %>
 			<% end %>
 		</div>
 		<% end %>
