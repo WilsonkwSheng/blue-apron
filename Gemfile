@@ -36,6 +36,7 @@ gem 'omniauth-facebook'
 gem 'cocoon'
 gem 'carrierwave'
 gem "mini_magick"
+gem 'braintree'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
