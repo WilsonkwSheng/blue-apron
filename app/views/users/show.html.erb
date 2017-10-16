@@ -12,6 +12,7 @@ Welcome <%= @user.name.capitalize %>
 				<p><%= recipe.price %></p>
 				<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
 				<% if current_user.superadmin? %>
+					<%= link_to 'Edit This Meal', edit_recipe_path(recipe.id) %>
 					<%= link_to "Delete", recipe_path(recipe.id), :method => :delete, :confirm => "Are you sure?" %>
 				<% end %>
 			<% end %>
