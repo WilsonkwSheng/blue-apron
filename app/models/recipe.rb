@@ -5,6 +5,7 @@ class Recipe < ApplicationRecord
 	has_many :ingredients
 	accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
 	mount_uploaders :images, ImageUploader
+	self.per_page = 2
 
 	def self.search(search)
 		if search

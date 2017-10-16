@@ -7,13 +7,19 @@ Welcome <%= @user.name %>
 <% if current_user.superadmin? || current_user.admin? %>
 	<%= link_to 'Create Recipe', new_recipe_path %>
 <% end %>
+
+<%= will_paginate @recipes %>
  
 <div>
 	<% @recipes.each do |recipe| %>
-		<div><%= recipe.title %></div>
-		<div><%= recipe.description %></div>
-		<div><%= recipe.price %></div>
-		<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
+		<% recipe.images.each do |all_img| %>
+			<div><%= image_tag all_img, class: "img-response" %></div>	
+			<div><%= recipe.title %></div>
+			<div><%= recipe.description %></div>
+			<div><%= recipe.price %></div>
+			<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
+		<% end %>
 	<% end %>
 </div> 
 	
+<%= will_paginate @recipes %>
