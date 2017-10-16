@@ -11,7 +11,7 @@
 	<p><%= direction.step %></p>
 <% end %>
 <div class="container">
-    <h1 class="title">StopWatch</h1>
+    <h1 class="title">Cooking Timer</h1>
     <h1 id="timerLabel">00:00:00</h1>
     <input type="button" class="myButton" onclick="start()" value="START" id="startBtn">
     <input type="button" class="myButton" onclick="stop()" value="STOP">
@@ -22,3 +22,5 @@
 	<p>Ingredient, <%= index + 1 %></p> 
 	<p><%= ingredient.name %></p>
 <% end %>
+
+<%= link_to "Make Payment", braintree_new_path(recipe_id: @recipe.id) %>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'braintree/new'
+  post 'braintree/checkout'
+  
 	resources :users, only: [:create, :show, :edit, :update]
 	resources :recipes
 	root 'welcome#index'
