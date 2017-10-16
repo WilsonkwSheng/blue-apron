@@ -1,7 +1,5 @@
 Welcome <%= @user.name.capitalize %>
 
-
-
 <%= will_paginate @recipes %>
  
 <div class="container">
@@ -13,7 +11,9 @@ Welcome <%= @user.name.capitalize %>
 				<p><%= recipe.description %></p>
 				<p><%= recipe.price %></p>
 				<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
-				
+				<% if current_user.superadmin? %>
+					<%= link_to "Delete", recipe_path(recipe.id), :method => :delete, :confirm => "Are you sure?" %>
+				<% end %>
 			<% end %>
 		</div>
 		<% end %>
