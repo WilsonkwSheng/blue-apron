@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
 	before(:each) do
-		@user = User.create!(name: "test", email: "example@gmail.com", password: "123", address: "sungai mati", city: "kl", state: "kl", zip: "47400", phone_number: "999")
+		@user = User.create(name: "test", email: "example@gmail.com", password: "123", address: "sungai mati", city: "kl", state: "kl", zip: "47400", phone_number: "999")
 		@recipe = Recipe.create!(title: "cookie", description: "chocolate cookie", price: 123, user_id: @user.id)
 		@search = "cookie"
 	end
