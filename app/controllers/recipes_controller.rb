@@ -44,9 +44,15 @@ class RecipesController < ApplicationController
 
  	def destroy
  		@recipe = Recipe.find(params[:id])
-		@recipe.destroy
-		redirect_to user_path(current_user)
-		flash[:success] = "Successfully deleted the list"
+ 		@recipe.destroy
+ 		respond_to do |format|
+ 			format.html { redirect_to user_path(current_user) }
+ 			format.js { render :layout => false }
+ 		end
+ 		# @recipe = Recipe.find(params[:id])
+		# @recipe.destroy
+		# redirect_to user_path(current_user)
+		# flash[:success] = "Successfully deleted the list"
  	end
 
 	private
