@@ -1,10 +1,10 @@
 class User < ApplicationRecord
 	has_secure_password
-	has_many :authentications, dependent: :destroy
-	has_many :recipes, dependent: :destroy
+	has_many 	:authentications, dependent: :destroy
+	has_many 	:recipes, dependent: :destroy
 	validates :name, presence: true
 	validates :password_digest, presence: true
-	validates :email, presence: true, uniqueness: true
+	validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/ }
 	validates :address, presence: true
 	validates :city, presence: true
 	validates :state, presence: true
