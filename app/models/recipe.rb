@@ -17,5 +17,4 @@ class Recipe < ApplicationRecord
 			all
 		end
 	end
-
 end
