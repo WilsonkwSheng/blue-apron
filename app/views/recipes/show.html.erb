@@ -2,25 +2,28 @@
 	<%= image_tag all_img, class: "img-response" %>
 <% end %>
 
-<p><%= @recipe.title %></p>
-<p><%= @recipe.description %></p>
-<p><%= @recipe.price %></p>
+<p><strong>Title: </strong><%= @recipe.title.capitalize %></p>
+<p><strong>Description: </strong><%= @recipe.description.capitalize %></p>
+<p><strong>Price in RM: </strong><%= @recipe.price %></p>
 
+<h1>Cooking Instructions</h1>
 <% @recipe.directions.each_with_index do |direction, index| %>
-	<p>Instruction, <%= index + 1 %></p> 
-	<p><%= direction.step %></p>
+	<p><strong>Instruction, <%= index + 1 %></strong></p> 
+	<p><%= direction.step.capitalize %></p>
 <% end %>
+
+<h1>List of Ingredients</h1>
+<% @recipe.ingredients.each_with_index do |ingredient, index| %>
+	<p><strong>Ingredient, <%= index + 1 %></strong></p> 
+	<p><%= ingredient.name.capitalize %></p>
+<% end %>
+
 <div class="container">
-    <h1 class="title">Cooking Timer</h1>
+    <h1 class="title">A Cooking Timer To Guide Your Cooking :)</h1>
     <h1 id="timerLabel">00:00:00</h1>
     <input type="button" class="myButton" onclick="start()" value="START" id="startBtn">
-    <input type="button" class="myButton" onclick="stop()" value="STOP">
+    <input type="button" class="myButton" onclick="stop()" value="PAUSE">
     <input type="button" class="myButton" onclick="reset()" value="RESET">
 </div>
-
-<% @recipe.ingredients.each_with_index do |ingredient, index| %>
-	<p>Ingredient, <%= index + 1 %></p> 
-	<p><%= ingredient.name %></p>
-<% end %>
 
 <%= link_to "Make Payment", braintree_new_path(recipe_id: @recipe.id) %>

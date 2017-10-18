@@ -1,3 +1,12 @@
+List of search results:
+
 <% @recipe.each do |recipe| %>
-	<%= recipe.title %>
+	<% recipe.images.each do |img| %>
+		<div><%= image_tag img %></div>
+		<div><strong>Title: </strong><%= recipe.title.capitalize %></div>
+		<div><strong>Description: </strong><%= recipe.description.capitalize %></div>
+		<div><strong>Price in RM: </strong><%= recipe.price %></div>
+		<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
+	<% end %>
 <% end %>
+

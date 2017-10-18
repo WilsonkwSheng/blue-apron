@@ -8,9 +8,9 @@ Welcome <%= @user.name.capitalize %>
 			<div class="row<%= index %>">
 				<% recipe.images.each do |all_img| %>
 					<p class="img-response"><%= image_tag all_img %></p>	
-					<p><%= recipe.title %></p>
-					<p><%= recipe.description %></p>
-					<p><%= recipe.price %></p>
+					<p><strong>Title:</strong> <%= recipe.title.capitalize %></p>
+					<p><strong>Description:</strong> <%= recipe.description.capitalize %></p>
+					<p><strong>Price:</strong> RM<%= recipe.price %></p>
 					<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
 					<% if current_user.superadmin? %>
 						<%= link_to 'Edit This Meal', edit_recipe_path(recipe.id) %>
