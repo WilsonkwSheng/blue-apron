@@ -5,17 +5,11 @@ class User < ApplicationRecord
 	validates :name, presence: true
 	validates :password_digest, presence: true
 	validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/ }
-	# validates :address, presence: true
-	# validates :city, presence: true
-	# validates :state, presence: true
-	# validates :zip, presence: true
-	# validates :phone_number, presence: true
 
 	enum role: { :customer => 0, :admin => 1, :superadmin => 2 }
  
  	def self.create_with_auth_and_hash(authentication, auth_hash)
  		if auth_hash["extra"]["raw_info"]["email"].nil?
- 			byebug
  			user = self.create!(
  				name: auth_hash["extra"]["raw_info"]["name"],
  				email: "example@gmail.com",
@@ -24,7 +18,6 @@ class User < ApplicationRecord
  			user.authentications << authentication
 			return user
  		else
- 			byebug
 		user = self.create!(
 		  name: auth_hash["extra"]["raw_info"]["name"],
 		  email: auth_hash["extra"]["raw_info"]["email"],
