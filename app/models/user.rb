@@ -5,11 +5,11 @@ class User < ApplicationRecord
 	validates :name, presence: true
 	validates :password_digest, presence: true
 	validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/ }
-	validates :address, presence: true
-	validates :city, presence: true
-	validates :state, presence: true
-	validates :zip, presence: true
-	validates :phone_number, presence: true
+	# validates :address, presence: true
+	# validates :city, presence: true
+	# validates :state, presence: true
+	# validates :zip, presence: true
+	# validates :phone_number, presence: true
 
 	enum role: { :customer => 0, :admin => 1, :superadmin => 2 }
  

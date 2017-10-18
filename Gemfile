@@ -38,6 +38,7 @@ gem 'carrierwave'
 gem "mini_magick"
 gem 'braintree'
 gem 'will_paginate', '~> 3.1.0'
+gem 'rails_12factor', group: :production
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
