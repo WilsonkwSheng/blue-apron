@@ -1,6 +1,6 @@
-<p>You're about to order <%= @recipe.title %></p> 
-<p>The total price will be <%= @recipe.price %></p>
-<p>Enter your details to get cooking</p>
+<p>You're about to order <strong><%= @recipe.title.capitalize %></strong></p> 
+<p>The <strong>total price</strong> will be <strong>RM: <%= @recipe.price %></strong></p>
+<p>Enter your details to get delivery and start cooking</p>
 
 <div class="demo-frame">
 	<%= form_for :checkout_form, url: braintree_checkout_path(recipe_id: @recipe.id), html: {id: "cardForm"} do |form| %> 
