@@ -14,6 +14,17 @@ class User < ApplicationRecord
 	enum role: { :customer => 0, :admin => 1, :superadmin => 2 }
  
  	def self.create_with_auth_and_hash(authentication, auth_hash)
+ 		if auth_hash["extra"]["raw_info"]["email"].nil?
+ 			byebug
+ 			user = self.create!(
+ 				name: auth_hash["extra"]["raw_info"]["name"],
+ 				email: "example@gmail.com",
+ 				password: SecureRandom.hex(4)
+ 			)
+ 			user.authentications << authentication
+			return user
+ 		else
+ 			byebug
 		user = self.create!(
 		  name: auth_hash["extra"]["raw_info"]["name"],
 		  email: auth_hash["extra"]["raw_info"]["email"],
@@ -22,6 +33,7 @@ class User < ApplicationRecord
 
 		user.authentications << authentication
 		return user
+		end
 	end
 
 		# grab fb_token to access Facebook for user data
