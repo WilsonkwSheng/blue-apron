@@ -34,7 +34,7 @@ class SessionsController < ApplicationController
      user = User.create_with_auth_and_hash(authentication, auth_hash)
      # you are expected to have a path that leads to a page for editing user details
      @next = edit_user_path(user)
-     @notice = "Please Fill In Your Email And Get Started! (If You See example@gmail.com Means Your Facebook Setting Do Not Allow To Share Email)"
+     @notice = "Please Fill In Your Email And Other Details To Get Started! (If You See example@gmail.com It Means Your Facebook Setting Do Not Allow To Share Email!)"
    end
 
    session[:user_id] = user.id
