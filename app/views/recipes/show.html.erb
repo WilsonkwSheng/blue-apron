@@ -26,4 +26,6 @@
     <input type="button" class="myButton" onclick="reset()" value="RESET">
 </div>
 
-<%= link_to "Make Payment", braintree_new_path(recipe_id: @recipe.id) %>
+<div><%= link_to "Go Back To Recipe Page", user_path(current_user) %></div>
+
+<div><%= link_to "Make Payment", braintree_new_path(recipe_id: @recipe.id) %></div>

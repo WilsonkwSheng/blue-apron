@@ -1,5 +1,5 @@
 <div id="new_link_div">
-	<%= form_for @recipe do |f| %>
+	<%= nested_form_for @recipe do |f| %>
 	<div class="text-field">
 		<%= f.label :title %>
 		<%= f.text_field :title %>
@@ -25,6 +25,7 @@
 		<%= f.fields_for :ingredients do |ingredient| %>
 			<%= render 'ingredient_fields', f: ingredient %>
 		<% end %>
+			<%= f.link_to_add "Add ingredients", :ingredients %>
 	</div>	
 
 	Directions
@@ -32,6 +33,7 @@
 		<%= f.fields_for :directions do |direction| %>
 			<%= render 'direction_fields', f: direction %>
 		<% end %>
+			<%= f.link_to_add "Add steps", :directions %>
 	</div>
 	<div class="links">
 		<%= f.hidden_field :user_id, :value => current_user.id %>
