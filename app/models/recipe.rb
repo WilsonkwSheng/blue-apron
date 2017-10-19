@@ -10,6 +10,7 @@ class Recipe < ApplicationRecord
 	validates :description, presence: true
 	validates :price, presence: true
 	validates :images, presence: true
+	default_scope { order(created_at: :desc) }
 
 	def self.search(search)
 		if search

@@ -4,7 +4,9 @@ RSpec.describe Recipe, type: :model do
 	before(:each) do
 		@user = User.create(name: "test", email: "example@gmail.com", password: "123", address: "sungai mati", city: "kl", state: "kl", zip: "47400", phone_number: "999")
 		@recipe = Recipe.create!(title: "cookie", description: "chocolate cookie", price: 123, user_id: @user.id, images: ["nasi_lemak.jpg"])
-		@search = "cookie"
+		@recipe_one = Recipe.create!(title: "burger", description: "McD", price: 9, user_id: @user.id, images: ["burger.jpg"])
+		@recipe_two = Recipe.create!(title: "pizza", description: "Domino", price: 30, user_id: @user.id, images: ["pizza.jpg"])
+		# @search = "cookie"
 	end
 
 	describe "create recipe" do
@@ -27,7 +29,8 @@ RSpec.describe Recipe, type: :model do
 
 	describe "#search" do
 		it "should equal to search argument" do
-			expect(@recipe.title).to eq(@search)
+			expect(Recipe.all).to eq [@recipe_two, @recipe_one, @recipe]
+			# expect(@recipe.title).to eq(@search)
 		end
 	end
 end
