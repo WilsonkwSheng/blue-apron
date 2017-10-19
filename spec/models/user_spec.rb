@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 	before(:each) do
-		@user = User.create(name: "test", email: "example@gmail.com", password: "123", address: "sungai mati", city: "kl", state: "kl", zip: "47400", phone_number: "999")
+		@user = User.create(name: "test", email: "example@gmail.com", password: "123", address: "sungai mati", city: "kl", state: "kl", zip: "47400", phone_number: "999", first_name: "Kevin", last_name: "Sia")
 	end
 
 	describe "login" do
@@ -32,5 +32,12 @@ RSpec.describe User, type: :model do
 			expect(@user).to_not be_valid
 		end
 	end
-end
 
+	describe "#full_name" do
+		it "will check user have full name" do
+			result = @user.full_name
+			expect(result).to eq("Kevin Sia")
+		end
+	end
+end
+	
