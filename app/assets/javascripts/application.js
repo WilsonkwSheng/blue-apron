@@ -14,7 +14,7 @@
 //= require turbolinks
 //= require_tree .
 //= jquery3
-//= require cocoon
+//= require jquery_nested_form
 
 // Braintree Java
 $(document).on('turbolinks:load', function() {

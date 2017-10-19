@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Figaro Gem for safe_keeping secret key
 gem 'figaro'
 # Use Omniauth-Facebook to login facebook
+gem "nested_form"
 gem 'omniauth-facebook'
 gem 'cocoon'
 gem 'carrierwave'
