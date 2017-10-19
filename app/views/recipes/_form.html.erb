@@ -7,7 +7,7 @@
 
 	<div class="text-field">
 		<%= f.label :description %>
-		<%= f.text_field :description %>
+		<%= f.text_area :description %>
 	</div>
 
 	<div class="text-field">
@@ -25,7 +25,7 @@
 		<%= f.fields_for :ingredients do |ingredient| %>
 			<%= render 'ingredient_fields', f: ingredient %>
 		<% end %>
-	</div>
+	</div>	
 
 	Directions
 	<div id="directions">

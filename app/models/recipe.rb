@@ -9,6 +9,7 @@ class Recipe < ApplicationRecord
 	validates :title, presence: true
 	validates :description, presence: true
 	validates :price, presence: true
+	validates :images, presence: true
 
 	def self.search(search)
 		if search
