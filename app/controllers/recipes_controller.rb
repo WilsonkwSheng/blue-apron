@@ -6,8 +6,8 @@ class RecipesController < ApplicationController
 	def new
 		@recipe = Recipe.new
 			7.times do
-	    recipe = @recipe.directions.build
-	    recipe = @recipe.ingredients.build
+	    @recipe.directions.build
+	    @recipe.ingredients.build
 	  end
 	end
 
@@ -17,8 +17,8 @@ class RecipesController < ApplicationController
 			redirect_to user_path(current_user)
 			flash[:success] = "Successfully create recipe listing"
 		else
-			render "new"
-			flash[:notice] = "Fail to create recipe listing"
+			redirect_to user_path(current_user)
+			flash[:notice] = "Fail to create recipe listing. Make sure the field is filled"
 		end
 	end
 

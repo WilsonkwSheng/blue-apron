@@ -14,6 +14,7 @@
 //= require turbolinks
 //= require_tree .
 //= jquery3
+//= require cocoon
 
 // Braintree Java
 $(document).on('turbolinks:load', function() {
