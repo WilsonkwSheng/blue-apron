@@ -1,12 +1,35 @@
-List of search results:
-
-<% @recipe.each do |recipe| %>
-	<% recipe.images.each do |img| %>
-		<div><%= image_tag img %></div>
-		<div><strong>Title: </strong><%= recipe.title.capitalize %></div>
-		<div><strong>Description: </strong><%= recipe.description.capitalize %></div>
-		<div><strong>Price in RM: </strong><%= recipe.price %></div>
-		<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
-	<% end %>
-<% end %>
+<div class="container">
+  <h2>List of search results:</h2>           
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Images</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @recipe.each do |recipe| %>
+      <tr id="recipe_<%= recipe.id %>">
+        <td><% recipe.images.each do |img| %>
+					<p><%= image_tag img %></p>
+				</td>
+        <td><%= recipe.title.capitalize %></td>
+        <td><%= recipe.description.capitalize %></td>
+        <td><%= recipe.price %></td>
+        <td><%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
+      		<% if current_user.superadmin? %>
+						<%= link_to 'Edit This Meal', edit_recipe_path(recipe.id) %>
+						<%= link_to "Delete", recipe_path(recipe.id), :method => :delete, data: {:confirm => "Are you sure?"}, :remote => true, :class => 'delete_recipe' %>
+					<% end %>
+				</td>
+      </tr>
+      	<% end %>
+			<% end %>
+    </tbody>
+  </table>
+</div>
+	
 
