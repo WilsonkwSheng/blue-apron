@@ -1,24 +1,21 @@
 <div id="new_link_div">
 	<%= nested_form_for @recipe do |f| %>
-	<div class="text-field">
-		<%= f.label :title %>
-		<%= f.text_field :title %>
+	<div class="form-group">
+			<%= f.label :title %>
+			<%= f.text_field :title, class: "form-control" %>
 	</div>
-
-	<div class="text-field">
-		<%= f.label :description %>
-		<%= f.text_area :description %>
+	<div class="form-group">
+			<%= f.label :description %>
+			<%= f.text_area :description, type: 'name', class: "form-control" %>
 	</div>
-
-	<div class="text-field">
-		<%= f.label :price %>
-		<%= f.text_field :price %>
+	<div class="form-group">
+			<%= f.label :price %>
+			<%= f.text_field :price, type: 'name', class: "form-control" %>
 	</div>
-
-		<div class="image-field">
-		  <%= f.label :images %>
-		  <p><%= f.file_field :images, multiple: true, class: "form-control" %></p>
-		</div>
+	<div class="form-group">
+			<%= f.label :images %>
+			<%= f.file_field :images, multiple: true %>
+	</div>
 
 	Ingredients
 	<div id="ingredients">
