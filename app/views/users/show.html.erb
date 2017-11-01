@@ -1,6 +1,11 @@
 Welcome <%= @user.name.capitalize %>
 
-<%= will_paginate @recipes %>
+<div class="container">
+  <ul class="pagination">
+    <li class="active"><%= will_paginate @recipes %></li>
+  </ul>
+</div>
+
 
 <div class="container">
   <h2>Recipe Table</h2>           
@@ -36,5 +41,9 @@ Welcome <%= @user.name.capitalize %>
   </table>
 </div>
 	
-<%= will_paginate @recipes %>
+<div class="container">
+  <ul class="pagination">
+    <li class="active"><%= will_paginate @recipes %></li>
+  </ul>
+</div>
 

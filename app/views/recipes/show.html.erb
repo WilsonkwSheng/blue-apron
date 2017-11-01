@@ -1,22 +1,30 @@
-<% @recipe.images.each do |all_img| %>
-	<%= image_tag all_img, class: "img-response" %>
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4">
+    	<% @recipe.images.each do |all_img| %>
+				<%= image_tag all_img, class: "img-response" %>
+			<% end %>
+				<p><strong>Title: </strong><%= @recipe.title.capitalize %></p>
+				<p><strong>Description: </strong><%= @recipe.description.capitalize %></p>
+				<p><strong>Price in RM: </strong><%= @recipe.price %></p></div>
+	  <div class="col-sm-4">
+			<h1>Cooking Instructions</h1>
 
-<p><strong>Title: </strong><%= @recipe.title.capitalize %></p>
-<p><strong>Description: </strong><%= @recipe.description.capitalize %></p>
-<p><strong>Price in RM: </strong><%= @recipe.price %></p>
-
-<h1>Cooking Instructions</h1>
-<% @recipe.directions.each_with_index do |direction, index| %>
-	<p><strong>Instruction, <%= index + 1 %></strong></p> 
-	<p><%= direction.step.capitalize %></p>
-<% end %>
-
-<h1>List of Ingredients</h1>
-<% @recipe.ingredients.each_with_index do |ingredient, index| %>
-	<p><strong>Ingredient, <%= index + 1 %></strong></p> 
-	<p><%= ingredient.name.capitalize %></p>
-<% end %>
+			<% @recipe.directions.each_with_index do |direction, index| %>
+				<p><strong>Instruction, <%= index + 1 %></strong></p> 
+				<p><%= direction.step.capitalize %></p>
+			<% end %>
+		</div>
+    <div class="col-sm-4">
+    	<h1>List of Ingredients</h1>
+			
+			<% @recipe.ingredients.each_with_index do |ingredient, index| %>
+				<p><strong>Ingredient, <%= index + 1 %></strong></p> 
+				<p><%= ingredient.name.capitalize %></p>
+			<% end %>
+		</div>
+  </div>
+</div>
 
 <div class="container">
     <h1 class="title">A Cooking Timer To Guide Your Cooking :)</h1>
