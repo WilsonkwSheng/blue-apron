@@ -1,5 +1,7 @@
+<div class="container">
 <%= form_for @user, method: :put do |form| %>
  <%= render partial: '/users/form', object: form %>
 
  <%= form.submit %>
 <% end %>
+</div>
