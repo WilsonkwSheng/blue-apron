@@ -7,6 +7,11 @@
     src="https://code.jquery.com/jquery-3.2.1.js"
     integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
     crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- JQuery Cdn -->
     <%= csrf_meta_tags %>
 
@@ -20,10 +25,41 @@
   </head>
 
   <body>
-  <!-- NavBar  -->
-    <%= render partial: "layouts/navbar" %>
-  <!-- NavBar  -->
 
+  <!-- NavBar  -->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" <%= link_to 'Home', root_path %>></a>
+      </div>
+    <ul class="nav navbar-nav">
+      <% if current_user.nil? %>
+        <li><%= link_to 'Sign Up', sign_up_path %>></li>
+        <li><%= link_to 'Login', sign_in_path %></li>
+        <li><%= link_to "Sign in with Facebook", "/auth/facebook" %></li>
+      <% else %>
+        <li><%= link_to 'Edit Profile', edit_user_path(current_user) %></li>
+        <li><%= link_to 'Cook Menu Page', user_path(current_user) %></li>
+      <% if current_user.superadmin? || current_user.admin? %>
+        <li><%= link_to 'Create Recipe', new_recipe_path, remote: true, id: "new_link" %></li>
+      <% end %>
+    </ul>
+      <div class="navbar-form navbar-left">
+        <div class="form-group">
+          <%= form_tag recipes_path, :method => 'get' do %> 
+          <%= text_field_tag :title, params[:title], placeholder: "Search Recipe", class: "form-control" %>
+          <%= submit_tag "Search" %>
+          <% end %>
+        </div>
+      </div>
+      <ul class="nav navbar-nav">
+      <li><%= link_to 'Sign Out', sign_out_path, method: :delete %>></li>
+      </ul>
+      <% end %>
+    </div>
+  </nav>
+  <!-- NavBar  -->
+  
   <!-- For Flash Messages -->
 	  <% flash.each do |key, value| %>
 	    <div class="alert alert-<%= key %>"><%= value %></div>
@@ -32,3 +68,6 @@
     <%= yield %>
   </body>
 </html>
+
+
+
