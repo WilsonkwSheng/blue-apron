@@ -1,20 +1,30 @@
-<h1> Food is better when you start from scratch </h1>
- 
-<h3> Cook Meal, the Blue Apron Way </h3>
+<div class="container-fluid">
+  <div class="col-md-12 text-center"> 
+	  <h1>Food is better when you start from scratch</h1>
+	  <h3> Cook Meal, the Blue Apron Way </h3>
+		<h4> Blue Apron's uniquely integrated model means better ingredients, better pricing and a better planet for us all </h4>
+	</div>
+  <div class="row">
+    <div class="col-sm-4">
+    	<h3>Our Chefs and Farmers work together</h3>
+			<p>To make food more sustainable and recipes more delicious</p>
+		</div>
+	  <div class="col-sm-4">
+	  	<h3>We Send you higher quality food at better value</h3>
+			<p>By cutting out the middleman and delivering ingredients at their freshest</p>
+		</div>
+    <div class="col-sm-4">
+    	<h3>You Cook Incredible Meal From Scratch</h3>
+			<p>With perfectly portioned ingredients and step-by-step recipes</p>
+		</div>
+  </div>
+</div>
 
-<h3>Our Chefs and Farmers work together</h3>
-<p>To make food more sustainable and recipes more delicious</p>
+<div class="col-md-12 text-center"> 
+  <% if current_user.nil? %>
+		<%= link_to "Get Started", sign_in_path %>
+	<% else %>
+		<%= link_to "Get Started", user_path(current_user) %>
+	<% end %>
+</div>
 
-<h3>We Send you higher quality food at better value</h3>
-<p>By cutting out the middleman and delivering ingredients at their freshest</p>
-
-<h3>You Cook Incredible Meal From Scratch</h3>
-<p>With perfectly portioned ingredients and step-by-step recipes</p>
-
-<p> Blue Apron's uniquely integrated model means better ingredients, better pricing and a better planet for us all </p>
-
-<% if current_user.nil? %>
-	<%= link_to "Get Started", sign_in_path %>
-<% else %>
-	<%= link_to "Get Started", user_path(current_user) %>
-<% end %>
