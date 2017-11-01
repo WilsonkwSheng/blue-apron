@@ -1,25 +1,40 @@
 Welcome <%= @user.name.capitalize %>
 
 <%= will_paginate @recipes %>
- 
+
 <div class="container">
-	<% @recipes.each_with_index do |recipe, index| %>
-		<div class="recipe clearfix" id="recipe_<%= recipe.id %>">
-			<div class="row<%= index %>">
-				<% recipe.images.each do |all_img| %>
-					<p class="img-response"><%= image_tag all_img %></p>	
-					<p><strong>Title:</strong> <%= recipe.title.capitalize %></p>
-					<p><strong>Description:</strong> <%= recipe.description.capitalize %></p>
-					<p><strong>Price:</strong> RM<%= recipe.price %></p>
-					<%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
-					<% if current_user.superadmin? %>
+  <h2>Recipe Table</h2>           
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Images</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @recipes.each_with_index do |recipe, index| %>
+      <tr id="recipe_<%= recipe.id %>">
+        <td><% recipe.images.each do |all_img| %>
+					<p><%= image_tag all_img %></p>
+				</td>
+        <td><%= recipe.title.capitalize %></td>
+        <td><%= recipe.description.capitalize %></td>
+        <td><%= recipe.price %></td>
+        <td><%= link_to 'Cook This Meal', recipe_path(recipe.id) %>
+      		<% if current_user.superadmin? %>
 						<%= link_to 'Edit This Meal', edit_recipe_path(recipe.id) %>
 						<%= link_to "Delete", recipe_path(recipe.id), :method => :delete, data: {:confirm => "Are you sure?"}, :remote => true, :class => 'delete_recipe' %>
 					<% end %>
-				<% end %>
-			</div>
-		</div>
-	<% end %>
-</div> 
+				</td>
+      </tr>
+      	<% end %>
+			<% end %>
+    </tbody>
+  </table>
+</div>
 	
 <%= will_paginate @recipes %>
+
